@@ -1,0 +1,46 @@
+
+<!DOCTYPE HTML>
+<html>
+  <head>
+    <style>
+      body {
+        margin: 0px;
+        padding: 0px;
+      }
+    </style>
+  </head>
+  <body data-rsssl=1>
+  	<div id="paint">
+  		<canvas id="myCanvas" height="500px" style="background-color:gray"></canvas>
+	</div>
+    <script>
+var canvas = document.getElementById('myCanvas');
+var ctx = canvas.getContext('2d');
+ 
+var painting = document.getElementById('paint');
+var paint_style = getComputedStyle(painting);
+canvas.width = parseInt(paint_style.getPropertyValue('width'));
+canvas.height = parseInt(paint_style.getPropertyValue('height'));
+
+var mouse = {x: 0, y: 0};
+ 
+ctx.beginPath();
+      ctx.moveTo(100, 150);
+      ctx.lineTo(450, 50);
+      ctx.stroke(); 
+ctx.beginPath();
+      ctx.moveTo(100, 180);
+      ctx.lineTo(450, 80);
+      ctx.stroke(); 
+ 
+ 
+canvas.addEventListener('mousemove', function(e) {
+  mouse.x = e.pageX - this.offsetLeft;
+  mouse.y = e.pageY - this.offsetTop;
+  ctx.fillStyle = '#00CC99';
+ctx.fillRect( mouse.x, mouse.y, 1, 1 );
+}, false);
+
+    </script>
+  </body>
+</html>            
